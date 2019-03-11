@@ -6,3 +6,19 @@ Logs/
 Packages/
 
 ProjectSettings/
+
+VRHome\.sln
+
+Oculus\.VR\.Scripts\.Editor\.csproj
+
+obj/
+
+\.vs/
+
+Oculus\.VR\.Editor\.csproj
+
+Oculus\.VR\.csproj
+
+Assembly-CSharp\.csproj
+
+Assembly-CSharp-Editor\.csproj
