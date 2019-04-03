@@ -529,8 +529,8 @@ namespace Valve.VR
                 Debug.LogError("<b>[SteamVR]</b> Error adding vr manifest file: " + addManifestErr.ToString());
             else
             {
-                if (showLogs)
-                    Debug.Log("<b>[SteamVR]</b> Successfully added VR manifest to SteamVR");
+              //  if (showLogs)
+                  //  Debug.Log("<b>[SteamVR]</b> Successfully added VR manifest to SteamVR");
             }
 
             int processId = System.Diagnostics.Process.GetCurrentProcess().Id;
@@ -540,8 +540,8 @@ namespace Valve.VR
                 Debug.LogError("<b>[SteamVR]</b> Error identifying application: " + applicationIdentifyErr.ToString());
             else
             {
-                if (showLogs)
-                    Debug.Log(string.Format("<b>[SteamVR]</b> Successfully identified process as editor project to SteamVR ({0})", SteamVR_Settings.instance.editorAppKey));
+               // if (showLogs)
+                   // Debug.Log(string.Format("<b>[SteamVR]</b> Successfully identified process as editor project to SteamVR ({0})", SteamVR_Settings.instance.editorAppKey));
             }
         }
 
@@ -615,7 +615,7 @@ namespace Valve.VR
         private SteamVR()
         {
             hmd = OpenVR.System;
-            Debug.Log("<b>[SteamVR]</b> Initialized. Connected to " + hmd_TrackingSystemName + ":" + hmd_SerialNumber);
+            //Debug.Log("<b>[SteamVR]</b> Initialized. Connected to " + hmd_TrackingSystemName + ":" + hmd_SerialNumber);
 
             compositor = OpenVR.Compositor;
             overlay = OpenVR.Overlay;

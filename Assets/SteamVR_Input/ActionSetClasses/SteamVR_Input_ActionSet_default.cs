@@ -169,6 +169,22 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean TriggerIndexLeft
+        {
+            get
+            {
+                return SteamVR_Actions.default_TriggerIndexLeft;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean TriggerIndexRight
+        {
+            get
+            {
+                return SteamVR_Actions.default_TriggerIndexRight;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get

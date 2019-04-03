@@ -171,7 +171,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabpinch"
+                     "output" : "/actions/default/in/triggerindexleft"
                   },
                   "touch" : {
                      "output" : "/actions/default/in/pointingindex"
@@ -200,7 +200,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/grabpinch"
+                     "output" : "/actions/default/in/triggerindexright"
                   }
                },
                "mode" : "button",
