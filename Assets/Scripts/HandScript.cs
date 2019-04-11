@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class HandScript : MonoBehaviour
 {
-    private MenuMeubleScript scriptMenu;
+    private MenuScript scriptMenu;
     public GameObject CubePointHand;
     public GameObject CubePointFinger;
     public GameObject pointedObject;
@@ -23,7 +23,7 @@ public class HandScript : MonoBehaviour
     void Start()
     {
         line = this.GetComponent<LineRenderer>();
-        scriptMenu = GameObject.Find("Interface").GetComponent<MenuMeubleScript>();
+        scriptMenu = GameObject.Find("Interface").GetComponent<MenuScript>();
     }
 
     // Update is called once per frame
@@ -302,6 +302,21 @@ public class HandScript : MonoBehaviour
                     grabbedObject = meuble;
                     grabbedObject.transform.parent = this.transform;
                 }
+            }
+            else if (rh.collider.gameObject.tag == "ButtonBlueprint")
+            {
+                if ((hand == "left" && SteamVR_Actions._default.GrabGripLeft.GetStateDown(SteamVR_Input_Sources.Any)))
+                {
+                    scriptMenu.menuVisible = false;
+                    scriptMenu.canvas.SetActive(false);
+                    GameManager.Instance.LoadHouse(rh.collider.gameObject.GetComponent<BlueprintHolder>().blueprint);
+                }
+                else if (hand == "right" && SteamVR_Actions._default.GrabGripRight.GetStateDown(SteamVR_Input_Sources.Any))
+                {
+                    scriptMenu.menuVisible = false;
+                    scriptMenu.canvas.SetActive(false);
+                    GameManager.Instance.LoadHouse(rh.collider.gameObject.GetComponent<BlueprintHolder>().blueprint);
+                }    
             }
         }
 

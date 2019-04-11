@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2549339170531107923}
   - component: {fileID: 3468151090747008803}
   m_Layer: 5
-  m_Name: MeublesPanel
+  m_Name: ItemsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7279034764900584800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 8675868675863951620}
   - component: {fileID: 8087694624310301347}
   m_Layer: 5
-  m_Name: btnWall
+  m_Name: btnBlueprints
   m_TagString: ButtonMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ RectTransform:
   m_Children:
   - {fileID: 3403432903041432703}
   m_Father: {fileID: 2925367217129042111}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Inertia: 1
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
-  m_Viewport: {fileID: 0}
+  m_Viewport: {fileID: 7309855681534359474}
   m_HorizontalScrollbar: {fileID: 6678381277360296378}
   m_VerticalScrollbar: {fileID: 731555259994842345}
   m_HorizontalScrollbarVisibility: 0
@@ -361,7 +361,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7279034764900584800}
-  - {fileID: 2836774724161851805}
   - {fileID: 5752505211553875914}
   - {fileID: 5472356267981838301}
   - {fileID: 7201634351842524505}
@@ -524,7 +523,7 @@ RectTransform:
   m_Children:
   - {fileID: 7869368380796170336}
   m_Father: {fileID: 2925367217129042111}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1021,7 +1020,7 @@ GameObject:
   - component: {fileID: 732848532487991202}
   - component: {fileID: 8156654257303703881}
   m_Layer: 5
-  m_Name: txtWall
+  m_Name: txtBlueprints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,7 +1086,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'WallCreation
+  m_Text: 'Blueprint
 
 '
 --- !u!1 &4996615108491163427
@@ -1123,7 +1122,7 @@ RectTransform:
   m_Children:
   - {fileID: 5510488434688851876}
   m_Father: {fileID: 2925367217129042111}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1270,10 +1269,11 @@ MonoBehaviour:
   meublesBathroom: []
   meublesKitchen: []
   meublesLivingroom: []
+  blueprints: []
   menuVisible: 0
   menuActuel: 
   canvas: {fileID: 6799211044361219063}
-  scrollViewMeubles: {fileID: 318446423777522033}
+  scrollViewPanel: {fileID: 490234110295062494}
   itemsPanel: {fileID: 9159913340458534032}
   buttonPrefab: {fileID: 1084625920671056511, guid: fb88f970d789d9548b5eb8f7d95ea05e,
     type: 3}
@@ -1281,6 +1281,7 @@ MonoBehaviour:
   btnBedRoom: {fileID: 4996615108491163427}
   btnKitchen: {fileID: 1745504999145045330}
   btnBathRoom: {fileID: 6268491071326341576}
+  btnBlueprints: {fileID: 321296758788556517}
 --- !u!1 &5911483601750019616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1555,7 @@ RectTransform:
   m_Children:
   - {fileID: 4977619665768530728}
   m_Father: {fileID: 2925367217129042111}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1765,7 +1766,7 @@ RectTransform:
   m_Children:
   - {fileID: 2955046439218869400}
   m_Father: {fileID: 2925367217129042111}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1963,80 +1964,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &8503391110716438116
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2836774724161851805}
-  - component: {fileID: 861579848676651458}
-  - component: {fileID: 7851352541511535155}
-  m_Layer: 5
-  m_Name: WallPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2836774724161851805
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8503391110716438116}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7999875, y: 0.9847132, z: 1.0001068}
-  m_Children: []
-  m_Father: {fileID: 2925367217129042111}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 113, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &861579848676651458
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8503391110716438116}
-  m_CullTransparentMesh: 0
---- !u!114 &7851352541511535155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8503391110716438116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.65882355}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
 --- !u!1 &9159913340458534032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,7 +1998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000045776367}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8499747031493416860
