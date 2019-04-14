@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5691569738048800922}
   - component: {fileID: 1632088395217813319}
   m_Layer: 0
-  m_Name: Bed 1
+  m_Name: Bed
   m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
