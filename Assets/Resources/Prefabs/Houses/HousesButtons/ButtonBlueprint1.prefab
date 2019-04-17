@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 5 1/2
 --- !u!1 &1084625920671056511
 GameObject:
   m_ObjectHideFlags: 0

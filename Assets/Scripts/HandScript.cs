@@ -18,6 +18,7 @@ public class HandScript : MonoBehaviour
     LineRenderer line;
     public bool isRaycasting;
     public bool isGrabbing;
+    private bool canTurn;
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +48,10 @@ public class HandScript : MonoBehaviour
         }
         
     }
-
+    //update de la mian gauche 
     public void UpdateLeft()
     {
-        if (SteamVR_Actions._default.GrabGripLeft.GetStateDown(SteamVR_Input_Sources.Any) && pointedObject != null)
+        if (SteamVR_Actions._default.GrabGripLeft.GetStateDown(SteamVR_Input_Sources.Any) && pointedObject != null) // on attrape un objet
         {
             Debug.Log("grabbing down");
             grabbedObject = pointedObject;
@@ -59,7 +60,7 @@ public class HandScript : MonoBehaviour
             grabbedObject.transform.parent = this.transform;
             grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
         }
-        if (SteamVR_Actions._default.GrabGripLeft.GetStateUp(SteamVR_Input_Sources.Any) && grabbedObject != null)
+        if (SteamVR_Actions._default.GrabGripLeft.GetStateUp(SteamVR_Input_Sources.Any) && grabbedObject != null) // on lache un objet
         {
             Debug.Log("grabbing up");
             grabbedObject.transform.parent = GameObject.Find("Home").transform;
@@ -70,21 +71,34 @@ public class HandScript : MonoBehaviour
 
         if (!isGrabbing)
         {
-            if (!SteamVR_Actions._default.PointingIndexLeft.GetState(SteamVR_Input_Sources.Any))
+            if (!SteamVR_Actions._default.PointingIndexLeft.GetState(SteamVR_Input_Sources.Any)) // on pointe l´index
             {
                 isRaycasting = true;
                 line.enabled = true;
                 CastRay();
 
             }
-            else pointedObject = null;
+            else if (pointedObject)
+            {
+                HideBounds();
+                pointedObject = null;
+            }
             float x = 0;
-            if (SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x > 0.2 || SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x < -0.2)
+            if (SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x > 0.2 || SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x < -0.2) // rotation perso
+            {
                 x = SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x;
-            GameObject.Find("Player").transform.Rotate(0, x, 0);
+                if (canTurn)
+                {
+                     if(x > 0.2) GameObject.Find("Player").transform.Rotate(0, 20, 0);
+                     else GameObject.Find("Player").transform.Rotate(0, -20, 0);
+                    canTurn = false;
+                }
+            }
+            x = SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x;
+            if ((x < 0.2 && x > -0.2) && !canTurn) canTurn = true;
         }
         else
-        {
+        { // rotation de l´object tenu
             float x = 0;
             float y = 0;
 
@@ -120,9 +134,10 @@ public class HandScript : MonoBehaviour
         }
     }
 
+    //update de la mian gauche 
     public void UpdateRight()
     {
-        if (SteamVR_Actions._default.GrabGripRight.GetStateDown(SteamVR_Input_Sources.Any) && pointedObject != null)
+        if (SteamVR_Actions._default.GrabGripRight.GetStateDown(SteamVR_Input_Sources.Any) && pointedObject != null) // on attrape un objet
         {
             grabbedObject = pointedObject;
             isGrabbing = true;
@@ -130,7 +145,7 @@ public class HandScript : MonoBehaviour
             grabbedObject.transform.parent = this.transform;
             grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
         }
-        if (SteamVR_Actions._default.GrabGripRight.GetStateUp(SteamVR_Input_Sources.Any) && grabbedObject != null)
+        if (SteamVR_Actions._default.GrabGripRight.GetStateUp(SteamVR_Input_Sources.Any) && grabbedObject != null) // on lache un objet
         {
             grabbedObject.transform.parent = GameObject.Find("Home").transform;
             grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -140,7 +155,7 @@ public class HandScript : MonoBehaviour
 
         if (!isGrabbing)
         {
-            if (!SteamVR_Actions._default.PointingIndexRight.GetState(SteamVR_Input_Sources.Any))
+            if (!SteamVR_Actions._default.PointingIndexRight.GetState(SteamVR_Input_Sources.Any)) // on pointe l´index
             {
                 isRaycasting = true;
                 line.enabled = true;
@@ -150,10 +165,23 @@ public class HandScript : MonoBehaviour
             {
                 HideBounds();
                 pointedObject = null;
-            } 
+            }
+            float x = 0;
+            if (SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x > 0.2 || SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x < -0.2) // rotation perso
+            {
+                x = SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x;
+                if (canTurn)
+                {
+                    if (x > 0.2) GameObject.Find("Player").transform.Rotate(0, 20, 0);
+                    else GameObject.Find("Player").transform.Rotate(0, -20, 0);
+                    canTurn = false;
+                }
+            }
+            x = SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x;
+            if ((x < 0.2 && x > -0.2) && !canTurn) canTurn = true;
         }
         else
-        {
+        { // rotation de l´object tenu
             float x = 0;
             float y = 0;
 
@@ -187,6 +215,7 @@ public class HandScript : MonoBehaviour
         }
     }
 
+    // raycast visible qui part de l´index
     public void CastRay()
     {
         Ray ray = new Ray(CubePointHand.transform.position, CubePointFinger.transform.position - CubePointHand.transform.position);
@@ -211,6 +240,7 @@ public class HandScript : MonoBehaviour
         line.SetPosition(1, end);
     }
 
+    // Raycast sur l´UI
     public void CastRayUI()
     {
         Ray ray = new Ray(CubePointHand.transform.position, CubePointFinger.transform.position - CubePointHand.transform.position);
