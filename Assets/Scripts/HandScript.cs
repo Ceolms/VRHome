@@ -102,7 +102,7 @@ public class HandScript : MonoBehaviour
             float x = 0;
             float y = 0;
 
-            if(SteamVR_Actions._default.TriggerIndexLeft.GetStateDown(SteamVR_Input_Sources.Any))
+            if(SteamVR_Actions._default.TriggerIndexLeft.GetStateDown(SteamVR_Input_Sources.Any)) // on change l'axe de rotation
             {
                 if (rotationType == "rotationY") rotationType = "rotationX";
                 else if (rotationType == "rotationX") rotationType = "rotationZ";
@@ -117,6 +117,7 @@ public class HandScript : MonoBehaviour
             else if (rotationType == "rotationY") grabbedObject.transform.Rotate(x, 0, 0);
             else grabbedObject.transform.Rotate(0, 0, x);
 
+            // on approche ou éloigne l'objet
             if (SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).y > 0.2 || SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).y < -0.2)
                 y = SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).y;
 
@@ -131,10 +132,17 @@ public class HandScript : MonoBehaviour
                 Vector3 end = (CubePointHand.transform.position) + (1000f * (CubePointFinger.transform.position - CubePointHand.transform.position));
                 grabbedObject.transform.position = Vector3.MoveTowards(grabbedObject.transform.position, end, speed);
             }
+            if (SteamVR_Actions._default.ClickY.GetStateDown(SteamVR_Input_Sources.Any)) // Suppression Objet
+            {
+                Destroy(grabbedObject);
+                grabbedObject = null;
+                pointedObject = null;
+                isGrabbing = false;
+            }
         }
     }
 
-    //update de la mian gauche 
+    //update de la main droite 
     public void UpdateRight()
     {
         if (SteamVR_Actions._default.GrabGripRight.GetStateDown(SteamVR_Input_Sources.Any) && pointedObject != null) // on attrape un objet
@@ -185,7 +193,7 @@ public class HandScript : MonoBehaviour
             float x = 0;
             float y = 0;
 
-            if(SteamVR_Actions._default.TriggerIndexLeft.GetStateDown(SteamVR_Input_Sources.Any))
+            if(SteamVR_Actions._default.TriggerIndexLeft.GetStateDown(SteamVR_Input_Sources.Any)) // on change l'axe de rotation
             {
                 if (rotationType == "rotationY") rotationType = "rotationX";
                 else if(rotationType == "rotationX") rotationType = "rotationZ";
@@ -198,6 +206,7 @@ public class HandScript : MonoBehaviour
             else if (rotationType == "rotationY") grabbedObject.transform.Rotate(x, 0, 0);
             else grabbedObject.transform.Rotate(0, 0, x);
 
+            // on approche ou éloigne l'objet
             if (SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).y > 0.2 || SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).y < -0.2)
                 y = SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).y;
 
@@ -211,6 +220,13 @@ public class HandScript : MonoBehaviour
                 float speed = y * Time.deltaTime * 5;
                 Vector3 end = (CubePointHand.transform.position) + (1000f * (CubePointFinger.transform.position - CubePointHand.transform.position));
                 grabbedObject.transform.position = Vector3.MoveTowards(grabbedObject.transform.position, end, speed);
+            }
+            if (SteamVR_Actions._default.ClickB.GetStateDown(SteamVR_Input_Sources.Any))
+            {
+                Destroy(grabbedObject);
+                grabbedObject = null;
+                pointedObject = null;
+                isGrabbing = false;
             }
         }
     }
@@ -354,6 +370,52 @@ public class HandScript : MonoBehaviour
         line.SetPosition(1, end);
     }
 
+    public static void DrawCircle(GameObject container, float radius, float lineWidth,string rotation)
+    {
+        var segments = 360;
+        GameObject circleObjet = new GameObject("CircleObjet");
+        circleObjet.transform.position = container.transform.position;
+        circleObjet.transform.SetParent(container.transform);
+        LineRenderer line = circleObjet.AddComponent<LineRenderer>();
+
+        line.enabled = true;
+        line.useWorldSpace = false;
+        line.startWidth = lineWidth;
+        line.endWidth = lineWidth;
+        line.positionCount = segments + 1;
+
+        var pointCount = segments + 1; // add extra point to make startpoint and endpoint the same to close the circle
+        var points = new Vector3[pointCount];
+
+        for (int i = 0; i < pointCount; i++)
+        {
+            var rad = Mathf.Deg2Rad * (i * 360f / segments);
+            points[i] = new Vector3(Mathf.Sin(rad) * radius, 0, Mathf.Cos(rad) * radius);
+        }
+
+        line.SetPositions(points);
+
+        if(rotation == "rotationX")
+        {
+
+        }
+        else if (rotation == "rotationY")
+        {
+
+        }
+        else if (rotation == "rotationZ")
+        {
+
+        }
+    }
+
+    public static void HideCircle(GameObject container)
+    {
+        foreach(Transform t in container.transform)
+        {
+            if (t.name == "CircleObjet") Destroy(t);
+        }
+    }
 
     public void ShowBounds()
     {
