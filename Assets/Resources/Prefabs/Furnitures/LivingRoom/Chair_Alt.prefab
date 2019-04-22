@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3787536223530415901}
   - component: {fileID: 1647540718464123796}
   - component: {fileID: 5658753930339185737}
+  - component: {fileID: 667050059441771088}
   m_Layer: 0
   m_Name: Chair_Alt
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &667050059441771088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655392962257576979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &910713703516651331
 GameObject:
   m_ObjectHideFlags: 0

@@ -84,6 +84,14 @@ public class MenuScript : MonoBehaviour
             CreerBoutons("Blueprints");
             menuActuel = "menuBlueprints";
         }
+        else if (btnClicked == "btnLoad")
+        {
+            GameManager.Instance.GetComponent<SaveGameManager>().Load();
+        }
+        else if (btnClicked == "btnSave")
+        {
+            GameManager.Instance.GetComponent<SaveGameManager>().Save();
+        }
     }
 
 

@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4180645477569365676}
   - component: {fileID: 1750096249767473701}
   - component: {fileID: 4617109352117929464}
+  - component: {fileID: 3293644264282790882}
   m_Layer: 0
   m_Name: Chandelier_Alt
   m_TagString: Movable
@@ -140,6 +141,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3293644264282790882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544028065241404834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1001 &1117957793689947177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,7 +222,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8650929120495685947, guid: 3ca801ae5ffa3f64d88b49e1ce28dad7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ca801ae5ffa3f64d88b49e1ce28dad7, type: 3}
 --- !u!4 &8608846884781111416 stripped
 Transform:

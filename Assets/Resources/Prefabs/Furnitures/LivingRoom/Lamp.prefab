@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 8696280557103167377}
   - component: {fileID: 6548885570716336920}
   - component: {fileID: 196051172405490885}
+  - component: {fileID: 4469383475245496322}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Movable
@@ -140,6 +141,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4469383475245496322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4982953000773756063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1001 &4804153324329984640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,7 +222,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1440757432805793720, guid: d976a8a229747d34a81a264519108626, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d976a8a229747d34a81a264519108626, type: 3}
 --- !u!4 &5890319021964965448 stripped
 Transform:

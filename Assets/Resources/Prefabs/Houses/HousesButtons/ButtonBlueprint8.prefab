@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 5 1/2  Alt
+  m_Text: Button
 --- !u!1 &1084625920671056511
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2000649582889585191}
   - component: {fileID: 2311649717379681585}
   m_Layer: 5
-  m_Name: ButtonBlueprint3
+  m_Name: ButtonBlueprint8
   m_TagString: ButtonBlueprint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 36a0c6568a235b448afe461b5f587e67, type: 3}
+  m_Texture: {fileID: 2800000, guid: efa493a374679a74fb3d5f68b65c9535, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -222,5 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e59cf0aa364fd046ac13ac410a3fbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprint: {fileID: 47687248371619364, guid: 325897094d7d88a4f9a586de5f6240d5, type: 3}
-  nom: 5 1/2  Alt
+  blueprint: {fileID: 5252822523546925599, guid: 943aeae251d7b8f44b257c6e1cafaa24,
+    type: 3}
+  nom: 

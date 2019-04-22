@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6946306064895519683}
   - component: {fileID: 4767914789160787786}
   - component: {fileID: 1905543841818028183}
+  - component: {fileID: 4651426285274229489}
   m_Layer: 0
   m_Name: SofaChair
   m_TagString: Movable
@@ -140,6 +141,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4651426285274229489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6768445000187263181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1001 &7077514154199842457
 PrefabInstance:
   m_ObjectHideFlags: 0

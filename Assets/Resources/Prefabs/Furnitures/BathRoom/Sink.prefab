@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3857168538956270685}
   - component: {fileID: 1714288112952326356}
   - component: {fileID: 5733237145037901577}
+  - component: {fileID: 4421238447211896897}
   m_Layer: 0
   m_Name: Sink
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4421238447211896897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580698357855297363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &987664016082584579
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +232,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9076146144259365127, guid: 5a29555e160a0b344af4d635ab2e9199, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5a29555e160a0b344af4d635ab2e9199, type: 3}
 --- !u!4 &2605434291748912149 stripped
 Transform:

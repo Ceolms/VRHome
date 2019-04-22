@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3342843752093639726}
   - component: {fileID: 876265701509386407}
   - component: {fileID: 6085432067891324794}
+  - component: {fileID: 6053892421041052203}
   m_Layer: 0
   m_Name: TableSquare
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6053892421041052203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435609120672577312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &1609935468519500912
 GameObject:
   m_ObjectHideFlags: 0

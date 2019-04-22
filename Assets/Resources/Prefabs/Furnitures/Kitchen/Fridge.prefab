@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6377901040479945535}
   - component: {fileID: 8849554135014012854}
   - component: {fileID: 2491965740218105963}
+  - component: {fileID: 2653536862625715916}
   m_Layer: 0
   m_Name: Fridge
   m_TagString: Movable
@@ -140,6 +141,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2653536862625715916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280842276638937137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1001 &7855880210571363020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,7 +222,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6094048701669852083, guid: 77b08367d90116b4680a9022e537fa06, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 77b08367d90116b4680a9022e537fa06, type: 3}
 --- !u!4 &4134998887353748395 stripped
 Transform:

@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 8794037081789431783}
   - component: {fileID: 6361202047837293422}
   - component: {fileID: 8255911662058675}
+  - component: {fileID: 5685439418380212793}
   m_Layer: 0
   m_Name: Chandelier
   m_TagString: Movable
@@ -140,6 +141,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5685439418380212793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152916699778444521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1001 &5732475926048726789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,7 +222,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4377017502464422967, guid: 5f205a39c9c66124d8f3cbb61fd195fa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5f205a39c9c66124d8f3cbb61fd195fa, type: 3}
 --- !u!4 &8342320098990883964 stripped
 Transform:

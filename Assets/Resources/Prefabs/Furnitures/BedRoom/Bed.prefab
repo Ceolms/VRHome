@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7832236015128198163}
   - component: {fileID: 5691569738048800922}
   - component: {fileID: 1632088395217813319}
+  - component: {fileID: 5996091993825755778}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5996091993825755778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852943821862579997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &6089491500833993805
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7468775024400205386}
   - component: {fileID: 5038225049280099011}
   - component: {fileID: 2139647184166782238}
+  - component: {fileID: 4343974821745941012}
   m_Layer: 0
   m_Name: Toilet
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4343974821745941012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6498147932967802180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &6887659940445146644
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +222,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1970273919608444382, guid: ac2810467ec1e5c45a0ff16393dcefc1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac2810467ec1e5c45a0ff16393dcefc1, type: 3}
 --- !u!4 &8550462227630421263 stripped
 Transform:

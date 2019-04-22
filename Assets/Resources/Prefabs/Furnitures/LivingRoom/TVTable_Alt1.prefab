@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5749943552281339296}
   - component: {fileID: 7892226979036483881}
   - component: {fileID: 3880978788812908276}
+  - component: {fileID: 8637691455761861727}
   m_Layer: 0
   m_Name: TVTable_Alt1
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8637691455761861727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8233569128310765230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &8644780823184289278
 GameObject:
   m_ObjectHideFlags: 0

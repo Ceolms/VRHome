@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4227101671141970809}
   - component: {fileID: 1793729249801086960}
   - component: {fileID: 4665245453697323053}
+  - component: {fileID: 2824770940685662641}
   m_Layer: 0
   m_Name: TVTable
   m_TagString: Movable
@@ -140,6 +141,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2824770940685662641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513914892012716151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1001 &4105017441630584463
 PrefabInstance:
   m_ObjectHideFlags: 0

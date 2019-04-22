@@ -13,6 +13,7 @@ public class HandScript : MonoBehaviour
     public GameObject pointedObject;
     public GameObject grabbedObject;
     public string hand = "left";
+    public Material matCircle;
     private string rotationType = "rotationX";
 
     LineRenderer line;
@@ -33,6 +34,7 @@ public class HandScript : MonoBehaviour
         line.enabled = false;
         isRaycasting = false;
 
+        GameObject.FindGameObjectsWithTag("MainCamera")[0].transform.localPosition = new Vector3(0, 0, 0);
         if (!scriptMenu.menuVisible)
         {
             if (hand == "left") UpdateLeft();
@@ -53,7 +55,7 @@ public class HandScript : MonoBehaviour
     {
         if (SteamVR_Actions._default.GrabGripLeft.GetStateDown(SteamVR_Input_Sources.Any) && pointedObject != null) // on attrape un objet
         {
-            Debug.Log("grabbing down");
+            //Debug.Log("grabbing down");
             grabbedObject = pointedObject;
             isGrabbing = true;
             //pointedObject = null;
@@ -62,7 +64,8 @@ public class HandScript : MonoBehaviour
         }
         if (SteamVR_Actions._default.GrabGripLeft.GetStateUp(SteamVR_Input_Sources.Any) && grabbedObject != null) // on lache un objet
         {
-            Debug.Log("grabbing up");
+            //Debug.Log("grabbing up");
+            HideCircle(grabbedObject);
             grabbedObject.transform.parent = GameObject.Find("Home").transform;
             grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             grabbedObject = null;
@@ -109,12 +112,13 @@ public class HandScript : MonoBehaviour
                 else rotationType = "rotationY";
             }
 
+            DrawCircle(grabbedObject, 1, .02f, rotationType);
 
             if (SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x > 0.2 || SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x < -0.2)
                 x = SteamVR_Actions._default.JoystickLeft.GetAxis(SteamVR_Input_Sources.Any).x;
 
-            if(rotationType == "rotationX") grabbedObject.transform.Rotate(0, x, 0);
-            else if (rotationType == "rotationY") grabbedObject.transform.Rotate(x, 0, 0);
+            if(rotationType == "rotationX") grabbedObject.transform.Rotate(x, 0, 0);
+            else if (rotationType == "rotationY") grabbedObject.transform.Rotate(0, x, 0);
             else grabbedObject.transform.Rotate(0, 0, x);
 
             // on approche ou éloigne l'objet
@@ -155,6 +159,7 @@ public class HandScript : MonoBehaviour
         }
         if (SteamVR_Actions._default.GrabGripRight.GetStateUp(SteamVR_Input_Sources.Any) && grabbedObject != null) // on lache un objet
         {
+            HideCircle(grabbedObject);
             grabbedObject.transform.parent = GameObject.Find("Home").transform;
             grabbedObject.GetComponent<Rigidbody>().isKinematic = true;
             grabbedObject = null;
@@ -192,18 +197,20 @@ public class HandScript : MonoBehaviour
         { // rotation de l´object tenu
             float x = 0;
             float y = 0;
-
-            if(SteamVR_Actions._default.TriggerIndexLeft.GetStateDown(SteamVR_Input_Sources.Any)) // on change l'axe de rotation
+            
+            if(SteamVR_Actions._default.TriggerIndexRight.GetStateDown(SteamVR_Input_Sources.Any)) // on change l'axe de rotation
             {
                 if (rotationType == "rotationY") rotationType = "rotationX";
                 else if(rotationType == "rotationX") rotationType = "rotationZ";
                 else rotationType = "rotationY";
             }
 
+            DrawCircle(grabbedObject, 1, .02f, rotationType);
+
             if (SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x > 0.2 || SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x < -0.2)
                 x = SteamVR_Actions._default.JoystickRight.GetAxis(SteamVR_Input_Sources.Any).x;
-            if (rotationType == "rotationX") grabbedObject.transform.Rotate(0, x, 0);
-            else if (rotationType == "rotationY") grabbedObject.transform.Rotate(x, 0, 0);
+            if (rotationType == "rotationX") grabbedObject.transform.Rotate(x, 0, 0);
+            else if (rotationType == "rotationY") grabbedObject.transform.Rotate(0, x, 0);
             else grabbedObject.transform.Rotate(0, 0, x);
 
             // on approche ou éloigne l'objet
@@ -297,22 +304,28 @@ public class HandScript : MonoBehaviour
                     if (scriptMenu.menuActuel == "menuLivingRoom")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/LivingRoom/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        //meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble,v, Quaternion.identity);
+                        
                     }
                     else if (scriptMenu.menuActuel == "menuBedRoom")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/BedRoom/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
                     }
                     else if (scriptMenu.menuActuel == "menuKitchen")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/Kitchen/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
                     }
                     else if (scriptMenu.menuActuel == "menuBathRoom")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/BathRoom/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
                     }
 
                 }
@@ -324,22 +337,28 @@ public class HandScript : MonoBehaviour
                     if (scriptMenu.menuActuel == "menuLivingRoom")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/LivingRoom/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        //meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
+
                     }
                     else if (scriptMenu.menuActuel == "menuBedRoom")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/BedRoom/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
                     }
                     else if (scriptMenu.menuActuel == "menuKitchen")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/Kitchen/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
                     }
                     else if (scriptMenu.menuActuel == "menuBathRoom")
                     {
                         prefabMeuble = Resources.Load<GameObject>("Prefabs/Furnitures/BathRoom/" + nomMeuble);
-                        meuble = (GameObject)Instantiate(prefabMeuble, rh.collider.gameObject.transform.position, Quaternion.identity);
+                        Vector3 v = (CubePointHand.transform.position) + (15f * (CubePointFinger.transform.position - CubePointHand.transform.position));
+                        meuble = (GameObject)Instantiate(prefabMeuble, v, Quaternion.identity);
                     }
                 }
                 if (meuble != null)
@@ -370,15 +389,26 @@ public class HandScript : MonoBehaviour
         line.SetPosition(1, end);
     }
 
-    public static void DrawCircle(GameObject container, float radius, float lineWidth,string rotation)
+    public void DrawCircle(GameObject container, float radius, float lineWidth,string rotation)
     {
-        var segments = 360;
-        GameObject circleObjet = new GameObject("CircleObjet");
-        circleObjet.transform.position = container.transform.position;
-        circleObjet.transform.SetParent(container.transform);
-        LineRenderer line = circleObjet.AddComponent<LineRenderer>();
+        GameObject overlay = container;
+            //container.transform.Find("Overlay").gameObject;
 
+
+        if (overlay.transform.Find("CircleObjet") == null)
+        {
+            GameObject circleObjet = new GameObject("CircleObjet");
+            circleObjet.transform.position = container.transform.position;
+            circleObjet.transform.SetParent(overlay.transform);
+            circleObjet.transform.localPosition = new Vector3(0, 0.1f, 0);
+            circleObjet.AddComponent<LineRenderer>();
+        }
+        LineRenderer line = overlay.transform.Find("CircleObjet").GetComponent<LineRenderer>();
         line.enabled = true;
+        var segments = 360;
+        
+        line.enabled = true;
+        line.material = matCircle;
         line.useWorldSpace = false;
         line.startWidth = lineWidth;
         line.endWidth = lineWidth;
@@ -394,26 +424,29 @@ public class HandScript : MonoBehaviour
         }
 
         line.SetPositions(points);
-
-        if(rotation == "rotationX")
+        if (rotation == "rotationX")
         {
-
+           Debug.Log(rotation);
+           overlay.transform.Find("CircleObjet").localRotation = Quaternion.Euler(0, 0, 90);
         }
         else if (rotation == "rotationY")
         {
-
+            Debug.Log(rotation);
+            overlay.transform.Find("CircleObjet").localRotation = Quaternion.Euler(0, 90, 0);
         }
         else if (rotation == "rotationZ")
         {
-
+            Debug.Log(rotation);
+            overlay.transform.Find("CircleObjet").localRotation = Quaternion.Euler(90, 0, 0);
         }
     }
 
     public static void HideCircle(GameObject container)
     {
-        foreach(Transform t in container.transform)
+
+        foreach (Transform t in container.transform)
         {
-            if (t.name == "CircleObjet") Destroy(t);
+            if (t.name == "CircleObjet") t.GetComponent<LineRenderer>().enabled = false;
         }
     }
 

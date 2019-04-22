@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 963884434552685835}
   - component: {fileID: 3399463884970865026}
   - component: {fileID: 8608491455184930399}
+  - component: {fileID: 6867541635066848452}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Movable
@@ -63,6 +64,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6867541635066848452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524070576989246981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bbbbd8df3aef0449f88c0d0d3f2172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectType: 0
+  specificName: 
 --- !u!1 &3842677279134993749
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +222,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4249334276958966477, guid: 0734f27262fd0ce41a4f24f3d77c530f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4249334276958966477, guid: 0734f27262fd0ce41a4f24f3d77c530f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0734f27262fd0ce41a4f24f3d77c530f, type: 3}
 --- !u!4 &1406264964888057069 stripped
 Transform:
